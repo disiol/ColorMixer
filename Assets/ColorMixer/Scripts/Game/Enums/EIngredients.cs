@@ -1,4 +1,4 @@
-namespace ColorMixer.Scripts.Enums
+namespace ColorMixer.Scripts.Game.Enums
 {
     public enum EIngredients
     {

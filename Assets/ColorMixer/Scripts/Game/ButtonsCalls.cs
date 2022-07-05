@@ -1,14 +1,15 @@
-using System;
-using ColorMixer.Scripts.Enums;
+using ColorMixer.Scripts.Game.Enums;
+using ColorMixer.Scripts.Game.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ColorMixer.Scripts
+namespace ColorMixer.Scripts.Game
+
 {
     public class ButtonsCalls : MonoBehaviour, IButtons
     {
         [SerializeField] private Button buttonIngredients;
-        [SerializeField] private Button buttonMix;
+        private GameObject _buttonMix;
         [SerializeField] private EIngredients selectIngredient;
 
         private ColorMix _colorMix;
@@ -21,8 +22,11 @@ namespace ColorMixer.Scripts
         void Start()
 
         {
+            _buttonMix = GameObject.Find("ImageFinalColor");
+            
             this.buttonIngredients.GetComponent<Button>().onClick.AddListener(SelectIngredient);
-            this.buttonMix.GetComponent<Button>().onClick.AddListener(ButtonMix);
+           
+            this._buttonMix.GetComponent<Button>().onClick.AddListener(ButtonMix);
         }
 
         private void SelectIngredient()
@@ -101,7 +105,7 @@ namespace ColorMixer.Scripts
         private void OnDestroy()
         {
             this.buttonIngredients.onClick.RemoveAllListeners();
-            this.buttonMix.onClick.RemoveAllListeners();
+            this._buttonMix.GetComponent<Button>().onClick.RemoveAllListeners();
         }
 
         #endregion

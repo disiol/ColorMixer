@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
-using ColorMixer.Scripts.Enums;
+using ColorMixer.Scripts.Game.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ColorMixer.Scripts
+namespace ColorMixer.Scripts.Game
 {
     public class ColorMix : SingletonMono<ColorMix>, IColorMix
     {

@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace ColorMixer.Scripts
+namespace ColorMixer.Scripts.Game.Interfaces
 {
     public interface IColorMix
     {        

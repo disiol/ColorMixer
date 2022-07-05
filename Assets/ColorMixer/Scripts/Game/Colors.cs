@@ -1,6 +1,7 @@
 using UnityEngine;
 
-namespace ColorMixer.Scripts
+namespace ColorMixer.Scripts.Game
+
 {
     public class Colors : Singleton<Colors>
     {
@@ -11,5 +12,14 @@ namespace ColorMixer.Scripts
         public static Color32 ColorRedTomato => new Color32((byte)225, (byte)27, (byte)0, (byte)225);
         public static Color32 ColorGreenCucumber => new Color32((byte)57, (byte)168, (byte)43, (byte)225);
         public static Color32 ColorPurpleAubergine => new Color32((byte)88, (byte)43, (byte)168, (byte)225);
+
+        public static Color32 VictoriousСolorBananaAndGreenApple =>
+            new Color32((byte)202, (byte)248, (byte)13, (byte)225);
+
+        public static Color32 VictoriousСolorGreenAppleOrangeAndRedCherry =>
+            new Color32((byte)218, (byte)156, (byte)24, (byte)225);
+
+        public static Color32 VictoriousСoloRedTomatoGreenCucumberPurpleAubergine =>
+            new Color32((byte)132, (byte)11, (byte)27, (byte)225);
     }
 }

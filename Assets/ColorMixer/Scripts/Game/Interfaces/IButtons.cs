@@ -1,4 +1,4 @@
-namespace ColorMixer.Scripts
+namespace ColorMixer.Scripts.Game.Interfaces
 {
     public interface IButtons
     {
