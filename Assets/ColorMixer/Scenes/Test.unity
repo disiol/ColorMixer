@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 512652}
   m_Layer: 5
   m_Name: ImageFinalColor
-  m_TagString: Untagged
+  m_TagString: ImageFinalColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 10.275299, y: 799.1341}
-  m_SizeDelta: {x: 429.8549, y: 440.9419}
+  m_AnchoredPosition: {x: 10.275299, y: 1097.9512}
+  m_SizeDelta: {x: 429.8549, y: 231.972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512652
 MonoBehaviour:
@@ -388,6 +388,81 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &412904585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412904586}
+  - component: {fileID: 412904588}
+  - component: {fileID: 412904587}
+  m_Layer: 5
+  m_Name: "ImageVictorious\u0421olor"
+  m_TagString: "ImageVictorious\u0421olor"
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &412904586
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412904585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 7.5347, y: 7.5347, z: 7.5347}
+  m_Children: []
+  m_Father: {fileID: 822122764}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -178.9567}
+  m_SizeDelta: {x: 100, y: 73.4217}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &412904587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412904585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &412904588
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412904585}
+  m_CullTransparentMesh: 1
 --- !u!1 &456897517
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +715,7 @@ RectTransform:
   m_Children:
   - {fileID: 512651}
   - {fileID: 236658394}
+  - {fileID: 412904586}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -690,6 +766,7 @@ MonoBehaviour:
     - {fileID: 5620712161094344867, guid: 48a0cd23842979baeaa4883d8320704a, type: 3}
     - {fileID: 1011145055944499242, guid: c2d2600cf2ca7eee58127a34f6464ee5, type: 3}
   ui: {fileID: 236658393}
+  _currentLevel: 0
 --- !u!4 &1311627129
 Transform:
   m_ObjectHideFlags: 0

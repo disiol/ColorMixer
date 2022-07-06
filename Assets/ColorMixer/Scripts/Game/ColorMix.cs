@@ -10,14 +10,14 @@ namespace ColorMixer.Scripts.Game
 
         private int _caunterIngredients;
         private List<Color> _aColors;
-        private Image _component;
+        private Image _imageFinalColor;
         private Color _componentColor;
 
 
         void Start()
 
         {
-            _component = GameObject.Find("ImageFinalColor").GetComponent<Image>();
+            _imageFinalColor = GameObject.Find("ImageFinalColor").GetComponent<Image>();
 
             this._aColors = new List<Color>();
         }
@@ -32,7 +32,7 @@ namespace ColorMixer.Scripts.Game
             if ( this._aColors !=null &  this._aColors.Count > 0)
             { 
                 _componentColor = CombineColors( this._aColors);
-                _component.color = _componentColor;
+                _imageFinalColor.color = _componentColor;
             }
         }
 

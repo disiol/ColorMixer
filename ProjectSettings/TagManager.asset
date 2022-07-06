@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ImageFinalColor
+  - "ImageVictorious\u0421olor"
   layers:
   - Default
   - TransparentFX
