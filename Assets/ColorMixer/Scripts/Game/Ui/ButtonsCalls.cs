@@ -10,7 +10,7 @@ namespace ColorMixer.Scripts.Game
     {
         [SerializeField] private Button buttonIngredients;
         private GameObject _buttonMix;
-        [SerializeField] private EIngredients selectIngredient;
+        [SerializeField] private EnumIngredients selectIngredient;
 
         private ColorMix _colorMix;
 
@@ -22,7 +22,7 @@ namespace ColorMixer.Scripts.Game
         void Start()
 
         {
-            _buttonMix = GameObject.Find("ImageFinalColor");
+            _buttonMix = GameObject.FindWithTag("ImageFinalColor");
             
             this.buttonIngredients.GetComponent<Button>().onClick.AddListener(SelectIngredient);
            
@@ -33,25 +33,25 @@ namespace ColorMixer.Scripts.Game
         {
             switch (selectIngredient)
             {
-                case EIngredients.Banana:
+                case EnumIngredients.Banana:
                     Banana();
                     break;
-                case EIngredients.Orange:
+                case EnumIngredients.Orange:
                     Orange();
                     break;
-                case EIngredients.GreenApple:
+                case EnumIngredients.GreenApple:
                     GreenApple();
                     break;
-                case EIngredients.GreenCucumber:
+                case EnumIngredients.GreenCucumber:
                     GreenCucumber();
                     break;
-                case EIngredients.PurpleAubergine:
+                case EnumIngredients.PurpleAubergine:
                     PurpleAubergine();
                     break;
-                case EIngredients.RedCherry:
+                case EnumIngredients.RedCherry:
                     RedCherry();
                     break;
-                case EIngredients.RedTomato:
+                case EnumIngredients.RedTomato:
                     RedTomato();
                     break;
             }
