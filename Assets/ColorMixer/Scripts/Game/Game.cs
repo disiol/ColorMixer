@@ -44,7 +44,6 @@ namespace ColorMixer.Scripts.Game
 
         private void Start()
         {
-
             this._instanceLevels._buttonsIngredients = buttonsIngredients;
             this._instanceLevels.ui = ui;
             this._textColorMatchGetComponentTextMeshProUGUI =
@@ -64,31 +63,7 @@ namespace ColorMixer.Scripts.Game
             this._instanceLevels.SelectLevel(currentLevel);
         }
 
-        private void CleanUi()
-        {
-            Transform uiTransform = ui.transform;
-            var childCount = uiTransform.childCount;
-            Debug.Log(childCount);
-            int i = 0;
-
-            //Array to hold all child obj
-            GameObject[] allChildren = new GameObject[childCount];
-
-            //Find all child obj and store to that array
-            foreach (Transform child in uiTransform)
-            {
-                allChildren[i] = child.gameObject;
-                i += 1;
-            }
-
-            //Now destroy them
-            foreach (GameObject child in allChildren)
-            {
-                DestroyImmediate(child.gameObject);
-            }
-
-            Debug.Log(transform.childCount);
-        }
+       
 
 
         public void LoadGame()
@@ -119,6 +94,7 @@ namespace ColorMixer.Scripts.Game
                 this._textColorMatchGetComponentTextMeshProUGUI.text =
                     String.Format(_theObtainedColorCorrespondsToTheRequiredColorBy,
                         calculationColorSMatchingPercentage);
+                CleanUi();
             }
 
             //      NextLevel();
@@ -136,9 +112,11 @@ namespace ColorMixer.Scripts.Game
                 r = victoryСolor.a - currentСolor.a,
                 g = victoryСolor.g - currentСolor.g,
                 b = victoryСolor.b - currentСolor.b;
-            return a * a + r * r + g * g + b * b;
+            int diff = a/2 + r/2 + g/2 + b/2;
+            return diff;
         }
 
+        
         private void NextLevel()
         {
             if (currentLevel < _instanceLevels.GetLevelsListCount())
@@ -149,6 +127,30 @@ namespace ColorMixer.Scripts.Game
             {
                 currentLevel = 0;
             }
+        }
+        
+        private void CleanUi()
+        {
+            Transform uiTransform = ui.transform;
+            var childCount = uiTransform.childCount;
+            int i = 0;
+
+            //Array to hold all child obj
+            GameObject[] allChildren = new GameObject[childCount];
+
+            //Find all child obj and store to that array
+            foreach (Transform child in uiTransform)
+            {
+                allChildren[i] = child.gameObject;
+                i += 1;
+            }
+
+            //Now destroy them
+            foreach (GameObject child in allChildren)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+
         }
     }
 }
