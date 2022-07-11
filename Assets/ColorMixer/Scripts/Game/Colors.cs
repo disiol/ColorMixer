@@ -14,7 +14,7 @@ namespace ColorMixer.Scripts.Game
         public static Color32 ColorPurpleAubergine => new Color32((byte)88, (byte)43, (byte)168, (byte)225);
 
         public static Color32 VictoriousСolorBananaAndGreenApple =>
-            new Color32((byte)151, (byte)206, (byte)69, (byte)225);
+            new Color32((byte)202, (byte)248, (byte)13, (byte)225);
 
         public static Color32 VictoriousСolorGreenAppleOrangeAndRedCherry =>
             new Color32((byte)218, (byte)156, (byte)24, (byte)225);
