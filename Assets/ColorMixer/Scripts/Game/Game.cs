@@ -18,9 +18,10 @@ namespace ColorMixer.Scripts.Game
 
         [SerializeField] private GameObject ui;
         [SerializeField] private GameObject imageFinalColor;
-        [SerializeField] private TextMeshProUGUI textColorMatch;
+        [SerializeField] private GameObject obtainedColorCorrespondsToTheRequired;
         [SerializeField] private int сonditionsForvictory;
-        private GameObject _buttonMix;
+        private TextMeshProUGUI _textColorMatch;
+        private Button _buttonColorMatch;
 
 
         public int currentLevel;
@@ -28,7 +29,7 @@ namespace ColorMixer.Scripts.Game
         private Levels _instanceLevels;
 
         private string _theObtainedColorCorrespondsToTheRequiredColorBy =
-            "Полученный цвет на [0]% соответствует необходимому";
+            "Полученный цвет на {0}% соответствует необходимому";
 
         private Color32 _victoryСolor;
         private Color32 _finalColor;
@@ -38,13 +39,19 @@ namespace ColorMixer.Scripts.Game
 
         private void Awake()
         {
-            _instanceLevels = Levels.Instance;
+            this._instanceLevels = Levels.Instance;
         }
 
         private void Start()
         {
+
             this._instanceLevels._buttonsIngredients = buttonsIngredients;
             this._instanceLevels.ui = ui;
+            this._textColorMatchGetComponentTextMeshProUGUI =
+                obtainedColorCorrespondsToTheRequired.GetComponent<TextMeshProUGUI>();
+
+            this._buttonColorMatch = obtainedColorCorrespondsToTheRequired.GetComponent<Button>();
+            this._buttonColorMatch.onClick.AddListener(StartGame);
 
 
             StartGame();
@@ -53,7 +60,34 @@ namespace ColorMixer.Scripts.Game
         public void StartGame()
         {
             _isCheckWin = false;
+            CleanUi();
             this._instanceLevels.SelectLevel(currentLevel);
+        }
+
+        private void CleanUi()
+        {
+            Transform uiTransform = ui.transform;
+            var childCount = uiTransform.childCount;
+            Debug.Log(childCount);
+            int i = 0;
+
+            //Array to hold all child obj
+            GameObject[] allChildren = new GameObject[childCount];
+
+            //Find all child obj and store to that array
+            foreach (Transform child in uiTransform)
+            {
+                allChildren[i] = child.gameObject;
+                i += 1;
+            }
+
+            //Now destroy them
+            foreach (GameObject child in allChildren)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+
+            Debug.Log(transform.childCount);
         }
 
 
@@ -81,9 +115,6 @@ namespace ColorMixer.Scripts.Game
 
                 var calculationColorSMatchingPercentage = GetDiff(_victoryСolor, _currentСolor);
 
-                this._textColorMatchGetComponentTextMeshProUGUI =
-                    textColorMatch.GetComponent<TextMeshProUGUI>();
-
 
                 this._textColorMatchGetComponentTextMeshProUGUI.text =
                     String.Format(_theObtainedColorCorrespondsToTheRequiredColorBy,
@@ -91,30 +122,20 @@ namespace ColorMixer.Scripts.Game
             }
 
             //      NextLevel();
-
-            //   StartGame();
         }
 
-        private int CalculationColorSMatchingPercentage(Color32 victoryСolor, Color32 currentСolor)
-        {
-            byte[] victoryСolorA = new[]
-            {
-                (byte)((victoryСolor.a - currentСolor.a) +
-                       (victoryСolor.b - currentСolor.b) +
-                       (victoryСolor.g - currentСolor.g) +
-                       (victoryСolor.r - currentСolor.r)
-                )
-            };
-            int matchingPercentage = BitConverter.ToInt32(victoryСolorA, 0);
-            return matchingPercentage / 4;
-        }
+        // private int CalculationColorSMatchingPercentage(Color32 victoryСolor, Color32 currentСolor)
+        // {
+        //     
+        //     GetDiff(_victoryСolor, _currentСolor);
+        // }
 
-        private static int GetDiff(Color32 color, Color32 baseColor)
+        private static int GetDiff(Color32 victoryСolor, Color32 currentСolor)
         {
-            int a = color.a - baseColor.a,
-                r = color.a - baseColor.a,
-                g = color.g - baseColor.g,
-                b = color.b - baseColor.b;
+            int a = victoryСolor.a - currentСolor.a,
+                r = victoryСolor.a - currentСolor.a,
+                g = victoryСolor.g - currentСolor.g,
+                b = victoryСolor.b - currentСolor.b;
             return a * a + r * r + g * g + b * b;
         }
 
