@@ -50,33 +50,43 @@ namespace ColorMixer.Scripts.Game
 
         public void BananaAndGreenApple()
         {
-            this._victoriousСolor = Colors.VictoriousСolorBananaAndGreenApple;
+            SetVictoriousСolor(Colors.VictoriousСolorBananaAndGreenApple);
+
             List<GameObject> ingredients = _buttonsIngredients[0].buttonsIngredientsForLevel;
-            TermsOfVictory(_victoriousСolor);
             AddButtonsToUi(ingredients);
         }
 
 
         public void GreenAppleOrangeAndRedCherry()
         {
-            this._victoriousСolor = Colors.VictoriousСolorGreenAppleOrangeAndRedCherry;
+            SetVictoriousСolor(Colors.VictoriousСolorGreenAppleOrangeAndRedCherry);
             List<GameObject> ingredients = _buttonsIngredients[1].buttonsIngredientsForLevel;
-            TermsOfVictory(_victoriousСolor);
             AddButtonsToUi(ingredients);
         }
 
         public void RedTomatoGreenCucumberPurpleAubergine()
         {
-            this._victoriousСolor = Colors.VictoriousСoloRedTomatoGreenCucumberPurpleAubergine;
+            SetVictoriousСolor(Colors.VictoriousСoloRedTomatoGreenCucumberPurpleAubergine);
             List<GameObject> ingredients = _buttonsIngredients[2].buttonsIngredientsForLevel;
-            TermsOfVictory(_victoriousСolor);
             AddButtonsToUi(ingredients);
         }
 
-        public void TermsOfVictory(Color32 currentСolor)
+
+        private void SetVictoriousСolor(Color32 victoriousСolor)
         {
-            this._imagVictoriousСolor.color = currentСolor;
-//TODO       TermsOfVictory 
+            this._victoriousСolor =  victoriousСolor;
+            this._imagVictoriousСolor.color = victoriousСolor;
+        }
+
+
+        public Color32 GetVictoryСolor()
+        {
+            return this._victoriousСolor;
+        }
+
+        public int GetLevelsListCount()
+        {
+            return this._levelsList.Count;
         }
 
 

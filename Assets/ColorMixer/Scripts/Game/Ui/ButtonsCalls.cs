@@ -13,6 +13,7 @@ namespace ColorMixer.Scripts.Game
         [SerializeField] private EnumIngredients selectIngredient;
 
         private ColorMix _colorMix;
+        private Game _getComponentGame;
 
         private void Awake()
         {
@@ -96,10 +97,13 @@ namespace ColorMixer.Scripts.Game
 
         public void ButtonMix()
         {
-            // The red, green, and blue values.
             _colorMix.SetImageColor();
+            this.   _colorMix.SetImageColor();
 
-            // The denominator for the weighted average for a color.
+            this.  _getComponentGame = GameObject.Find("GameMenedger").GetComponent<Game>();
+
+            this.  _getComponentGame.CheckWin();
+
         }
 
         private void OnDestroy()

@@ -9,7 +9,8 @@ namespace ColorMixer.Scripts.Game.Interfaces
         void GreenAppleOrangeAndRedCherry();
         void RedTomatoGreenCucumberPurpleAubergine();
 
-        void TermsOfVictory(Color32 CurentСolor);
+        Color32 GetVictoryСolor();
+        int GetLevelsListCount();
         void AddButtonsToUi(List<GameObject> ingredients);
     }
 }
