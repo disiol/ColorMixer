@@ -25,11 +25,14 @@ namespace ColorMixer.Scripts.Game
 
 
         public int currentLevel;
-        private bool _wine;
         private Levels _instanceLevels;
 
+        private String _victory = "Победа !!!";
+        private String _tryAgain = "Пробуйте еще раз";
+
         private string _theObtainedColorCorrespondsToTheRequiredColorBy =
-            "Полученный цвет на {0}% соответствует необходимому";
+            "{0} \n Полученный цвет на {1}% соответствует необходимому";
+
 
         private Color32 _victoryСolor;
         private Color32 _finalColor;
@@ -58,12 +61,11 @@ namespace ColorMixer.Scripts.Game
 
         public void StartGame()
         {
+            this.obtainedColorCorrespondsToTheRequired.SetActive(false);
             _isCheckWin = false;
             CleanUi();
             this._instanceLevels.SelectLevel(currentLevel);
         }
-
-       
 
 
         public void LoadGame()
@@ -83,40 +85,58 @@ namespace ColorMixer.Scripts.Game
             {
                 Debug.Log("Game CheckWin ");
                 _isCheckWin = true;
-                this._finalColor = GameObject.Find("ImageFinalColor").GetComponent<Image>().color;
+                this._finalColor = imageFinalColor.GetComponent<Image>().color;
 
                 this._victoryСolor = _instanceLevels.GetVictoryСolor();
                 this._currentСolor = _finalColor;
 
-                var calculationColorSMatchingPercentage = GetDiff(_victoryСolor, _currentСolor);
+                var calculationColorSMatchingPercentage =
+                    CalculationColorSMatchingPercentage();
 
-
-                this._textColorMatchGetComponentTextMeshProUGUI.text =
-                    String.Format(_theObtainedColorCorrespondsToTheRequiredColorBy,
-                        calculationColorSMatchingPercentage);
-                CleanUi();
+                if (calculationColorSMatchingPercentage >= this.сonditionsForvictory)
+                {
+                    ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, this._victory);
+                    NextLevel();
+                }
+                else
+                {
+                    ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, this._tryAgain);
+                }
             }
-
-            //      NextLevel();
         }
 
-        // private int CalculationColorSMatchingPercentage(Color32 victoryСolor, Color32 currentСolor)
-        // {
-        //     
-        //     GetDiff(_victoryСolor, _currentСolor);
-        // }
+        private void ShowObtainedColorCorrespondsToTheRequired(int calculationColorSMatchingPercentage,
+            string victoryOrTryAgain)
+        {
+            this.obtainedColorCorrespondsToTheRequired.SetActive(true);
 
-        private static int GetDiff(Color32 victoryСolor, Color32 currentСolor)
+            this._textColorMatchGetComponentTextMeshProUGUI.text =
+                String.Format(_theObtainedColorCorrespondsToTheRequiredColorBy, victoryOrTryAgain,
+                    calculationColorSMatchingPercentage);
+
+            CleanUi();
+        }
+
+        //TODO refactoring
+        private int CalculationColorSMatchingPercentage()
+        {
+            int diffСolors = GetDiffСolors(this._victoryСolor, this._currentСolor);
+            int calculationColorSMatchingPercentage = 100 - diffСolors;
+
+            return calculationColorSMatchingPercentage;
+        }
+
+        private static int GetDiffСolors(Color32 victoryСolor, Color32 currentСolor)
         {
             int a = victoryСolor.a - currentСolor.a,
                 r = victoryСolor.a - currentСolor.a,
                 g = victoryСolor.g - currentСolor.g,
                 b = victoryСolor.b - currentСolor.b;
-            int diff = a/2 + r/2 + g/2 + b/2;
+            int diff = a / 2 + r / 2 + g / 2 + b / 2;
             return diff;
         }
 
-        
+
         private void NextLevel()
         {
             if (currentLevel < _instanceLevels.GetLevelsListCount())
@@ -128,7 +148,7 @@ namespace ColorMixer.Scripts.Game
                 currentLevel = 0;
             }
         }
-        
+
         private void CleanUi()
         {
             Transform uiTransform = ui.transform;
@@ -150,7 +170,6 @@ namespace ColorMixer.Scripts.Game
             {
                 DestroyImmediate(child.gameObject);
             }
-
         }
     }
 }
