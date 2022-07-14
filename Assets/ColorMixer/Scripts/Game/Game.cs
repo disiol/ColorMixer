@@ -6,6 +6,7 @@ using ColorMixer.Scripts.Game.Enums;
 using ColorMixer.Scripts.Game.Interfaces;
 using ColorMixer.Scripts.Game.Ui;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +36,6 @@ namespace ColorMixer.Scripts.Game
 
 
         private Color32 _victoryСolor;
-        private Color32 _finalColor;
         private Color32 _currentСolor;
         private TextMeshProUGUI _textColorMatchGetComponentTextMeshProUGUI;
         private bool _isCheckWin;
@@ -85,12 +85,12 @@ namespace ColorMixer.Scripts.Game
             {
                 Debug.Log("Game CheckWin ");
                 _isCheckWin = true;
-                this._finalColor = imageFinalColor.GetComponent<Image>().color;
 
                 this._victoryСolor = _instanceLevels.GetVictoryСolor();
-                this._currentСolor = _finalColor;
+                this._currentСolor = imageFinalColor.GetComponent<Image>().color;
 
-                var calculationColorSMatchingPercentage = CalculationColorSMatchingPercentage();
+                var calculationColorSMatchingPercentage =
+                    CalculationColorSMatchingPercentage(this._victoryСolor, this._currentСolor);
 
                 if (calculationColorSMatchingPercentage >= this.сonditionsForVictory)
                 {
@@ -117,10 +117,23 @@ namespace ColorMixer.Scripts.Game
         }
 
         //TODO refactoring
-        private int CalculationColorSMatchingPercentage()
+        private int CalculationColorSMatchingPercentage(Color32 victoryСolor, Color32 currentСolor)
         {
-            int diffСolors = GetDiffСolors(this._victoryСolor, this._currentСolor);
-            int calculationColorSMatchingPercentage = 100 - diffСolors;
+            int victoryСolorPercent = 100;
+
+            int diffСolors = GetDiffСolors(victoryСolor, currentСolor);
+
+            int calculationColorSMatchingPercentage;
+
+            if (diffСolors < 0)
+            {
+                calculationColorSMatchingPercentage = victoryСolorPercent + diffСolors;
+            }
+            else
+            {
+                calculationColorSMatchingPercentage = victoryСolorPercent - diffСolors;
+            }
+
 
             return calculationColorSMatchingPercentage;
         }
