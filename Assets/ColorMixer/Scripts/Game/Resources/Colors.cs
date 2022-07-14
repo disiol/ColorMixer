@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorMixer.Scripts.Game
+namespace ColorMixer.Scripts.Game.Resources
 
 {
     public class Colors : Singleton<Colors>
@@ -17,7 +17,7 @@ namespace ColorMixer.Scripts.Game
             new Color32((byte)163, (byte)224, (byte)58, (byte)225);
 
         public static Color32 VictoriousСolorGreenAppleOrangeAndRedCherry =>
-            new Color32((byte)218, (byte)156, (byte)24, (byte)225);
+            new Color32((byte)172, (byte)123, (byte)50, (byte)225);
 
         public static Color32 VictoriousСoloRedTomatoGreenCucumberPurpleAubergine =>
             new Color32((byte)132, (byte)11, (byte)27, (byte)225);
