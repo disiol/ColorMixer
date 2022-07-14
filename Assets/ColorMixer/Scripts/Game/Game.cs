@@ -25,7 +25,7 @@ namespace ColorMixer.Scripts.Game
         private Button _buttonColorMatch;
 
 
-        public int currentLevel;
+        public int currentLevelNumber;
         private Levels _instanceLevels;
 
         private String _victory = "Победа !!!";
@@ -64,7 +64,7 @@ namespace ColorMixer.Scripts.Game
             this.obtainedColorCorrespondsToTheRequired.SetActive(false);
             _isCheckWin = false;
             CleanUi();
-            this._instanceLevels.SelectLevel(currentLevel);
+            this._instanceLevels.SelectLevel(currentLevelNumber);
         }
 
 
@@ -151,13 +151,13 @@ namespace ColorMixer.Scripts.Game
 
         private void NextLevel()
         {
-            if (currentLevel < _instanceLevels.GetLevelsListCount())
+            if (currentLevelNumber < _instanceLevels.GetLevelsListCount())
             {
-                currentLevel++;
+                currentLevelNumber++;
             }
             else
             {
-                currentLevel = 0;
+                currentLevelNumber = 0;
             }
         }
 
