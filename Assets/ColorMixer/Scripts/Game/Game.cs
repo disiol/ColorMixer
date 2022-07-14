@@ -19,7 +19,7 @@ namespace ColorMixer.Scripts.Game
         [SerializeField] private GameObject ui;
         [SerializeField] private GameObject imageFinalColor;
         [SerializeField] private GameObject obtainedColorCorrespondsToTheRequired;
-        [SerializeField] private int сonditionsForvictory;
+        [SerializeField] private int сonditionsForVictory;
         private TextMeshProUGUI _textColorMatch;
         private Button _buttonColorMatch;
 
@@ -90,10 +90,9 @@ namespace ColorMixer.Scripts.Game
                 this._victoryСolor = _instanceLevels.GetVictoryСolor();
                 this._currentСolor = _finalColor;
 
-                var calculationColorSMatchingPercentage =
-                    CalculationColorSMatchingPercentage();
+                var calculationColorSMatchingPercentage = CalculationColorSMatchingPercentage();
 
-                if (calculationColorSMatchingPercentage >= this.сonditionsForvictory)
+                if (calculationColorSMatchingPercentage >= this.сonditionsForVictory)
                 {
                     ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, this._victory);
                     NextLevel();
