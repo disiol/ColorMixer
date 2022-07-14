@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.34488443, g: 0.1685359, b: 0.65900666, a: 1}
+  m_Color: {r: 0.06385723, g: 0.063860364, b: 0.066037714, a: 0.38431373}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 1311627129}
   - component: {fileID: 1311627128}
   m_Layer: 0
-  m_Name: GameMenedger
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +949,7 @@ MonoBehaviour:
   ui: {fileID: 236658393}
   imageFinalColor: {fileID: 512650}
   obtainedColorCorrespondsToTheRequired: {fileID: 1085794220}
-  "\u0441onditionsForvictory": 90
+  "\u0441onditionsForVictory": 90
   currentLevel: 0
 --- !u!4 &1311627129
 Transform:
