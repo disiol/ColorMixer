@@ -1,5 +1,6 @@
 using ColorMixer.Scripts.Game.Enums;
 using ColorMixer.Scripts.Game.Interfaces;
+using ColorMixer.Scripts.Game.Resources;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,9 @@ namespace ColorMixer.Scripts.Game
     public class ButtonsCalls : MonoBehaviour, IButtons
     {
         [SerializeField] private Button buttonIngredients;
-        private GameObject _buttonMix;
         [SerializeField] private EnumIngredients selectIngredient;
-
+       
+        private GameObject _buttonMix;
         private ColorMix _colorMix;
         private Game _getComponentGame;
 
@@ -23,7 +24,7 @@ namespace ColorMixer.Scripts.Game
         void Start()
 
         {
-            _buttonMix = GameObject.FindWithTag("ImageFinalColor");
+            _buttonMix = GameObject.Find("ImageFinalColor");
             
             this.buttonIngredients.GetComponent<Button>().onClick.AddListener(SelectIngredient);
            
@@ -100,7 +101,7 @@ namespace ColorMixer.Scripts.Game
             _colorMix.SetImageColor();
             this.   _colorMix.SetImageColor();
 
-            this.  _getComponentGame = GameObject.Find("GameMenedger").GetComponent<Game>();
+            this.  _getComponentGame = GameObject.Find("GameManager").GetComponent<Game>();
 
             this.  _getComponentGame.CheckWin();
 
