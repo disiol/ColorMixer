@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ColorMixer.Scripts.Game.Enums;
 using ColorMixer.Scripts.Game.Interfaces;
+using ColorMixer.Scripts.Game.Resources;
 using ColorMixer.Scripts.Game.Ui;
 using UnityEngine;
 using UnityEngine.UI;
@@ -86,7 +87,7 @@ namespace ColorMixer.Scripts.Game
 
         public int GetLevelsListCount()
         {
-            return this._levelsList.Count;
+            return this._levelsList.Count - 1;
         }
 
 
