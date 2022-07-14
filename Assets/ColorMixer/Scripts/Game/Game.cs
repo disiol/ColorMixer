@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ColorMixer.Scripts.Game.Enums;
 using ColorMixer.Scripts.Game.Interfaces;
+using ColorMixer.Scripts.Game.Resources;
 using ColorMixer.Scripts.Game.Ui;
 using TMPro;
 using Unity.VisualScripting;
@@ -27,12 +28,6 @@ namespace ColorMixer.Scripts.Game
 
         public int currentLevelNumber;
         private Levels _instanceLevels;
-
-        private String _victory = "Победа !!!";
-        private String _tryAgain = "Пробуйте еще раз";
-
-        private string _theObtainedColorCorrespondsToTheRequiredColorBy =
-            "{0} \n Полученный цвет на {1}% соответствует необходимому";
 
 
         private Color32 _victoryСolor;
@@ -94,12 +89,12 @@ namespace ColorMixer.Scripts.Game
 
                 if (calculationColorSMatchingPercentage >= this.сonditionsForVictory)
                 {
-                    ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, this._victory);
+                    ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, Strings.Victory);
                     NextLevel();
                 }
                 else
                 {
-                    ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, this._tryAgain);
+                    ShowObtainedColorCorrespondsToTheRequired(calculationColorSMatchingPercentage, Strings.TryAgain);
                 }
             }
         }
@@ -110,7 +105,7 @@ namespace ColorMixer.Scripts.Game
             this.obtainedColorCorrespondsToTheRequired.SetActive(true);
 
             this._textColorMatchGetComponentTextMeshProUGUI.text =
-                String.Format(_theObtainedColorCorrespondsToTheRequiredColorBy, victoryOrTryAgain,
+                String.Format(Strings.TheObtainedColorCorrespondsToTheRequiredColorBy, victoryOrTryAgain,
                     calculationColorSMatchingPercentage);
 
             CleanUi();
